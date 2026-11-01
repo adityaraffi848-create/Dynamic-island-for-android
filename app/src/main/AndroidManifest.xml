@@ -5,11 +5,14 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:icon="@android:drawable/sym_def_app_icon"
         android:label="Dynamic Island"
-        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
 
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
@@ -31,5 +34,11 @@
                 <action android:name="android.service.notification.NotificationListenerService"/>
             </intent-filter>
         </service>
+
+        <receiver android:name=".BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
